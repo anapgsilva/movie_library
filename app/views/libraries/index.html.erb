@@ -1,0 +1,6 @@
+<h1>My Movie Libraries</h1>
+
+
+<% @libraries.each do |library| %>
+  <h3><%= link_to library.name, library %></h3>
+<% end %>

@@ -1,15 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project1</title>
+    <title>The Movie Library</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+
+      <nav class="top">
+        <%= link_to "Home", root_path %>
+
+        <% if @current_user.present? %>
+
+          <% if @current_user.admin? %>
+            <%= link_to "All users", users_path %>
+          <% end %>
+
+          <%= link_to "My Libraries", libraries_path %>
+          <%= link_to "Log out #{@current_user.email}", login_path, :method => "delete" %>
+
+        <% else %>
+          <%= link_to "Sign Up", new_user_path %>
+          <%= link_to "Log in", login_path %>
+        <% end %>
+      </nav>
+
+      <% if @current_user.present? %>
+        <nav class="user">
+          <%= link_to "New Library", new_library_path %>
+          <%= link_to "Search Movies", movies_path %>
+          <%= link_to "Search Genres", genres_path %>
+          <%= link_to "Search Directors", directors_path %>
+        </nav>
+      <% end %>
+
+
+      <%= yield %>
+
+
+    </div>
+
+
+
   </body>
 </html>

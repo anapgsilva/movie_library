@@ -1,0 +1,16 @@
+<%= link_to "Back", genres_path %>
+
+<h1><%= @genre.name %></h1>
+
+<% if @genre.movies.present? %>
+  <h2>Movies</h2>
+
+  <%= @genre.movies do |movie| %>
+    <%= link_to image_tag(movie.cover, :class => "thumb", :alt => movie.title), movie  %>
+  <% end %>
+<% end %>
+
+<div class="controls">
+  <%= link_to "Edit genre", edit_genre_path(@genre) %>
+  <%= link_to "Delete genre", @genre, :method => "delete", :data => {:confirm => "Are you sure you want to delete #{@genre.name}"} %>
+</div>

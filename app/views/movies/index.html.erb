@@ -1,0 +1,5 @@
+<h1>Movies</h1>
+
+<% @movies.each do |movie| %>
+  <%= link_to image_tag(movie.cover, :class => "thumb"), movie %>
+<% end %>

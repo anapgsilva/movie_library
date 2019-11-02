@@ -1,0 +1,32 @@
+.container {
+  max-width: 960px;
+}
+
+nav.top {
+  text-align: right;
+  border-bottom: 2px solid #42b9f5;
+  padding-bottom: 10px;
+}
+
+nav.top a {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+nav.user {
+  font-weight: bold;
+  padding: 10px 0 20px 0;
+}
+
+nav.user a {
+  margin-right: 20px;
+}
+
+.feature {
+  max-width: 100%;
+}
+
+.thumb {
+  max-height: 150px;
+}

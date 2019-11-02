@@ -1,0 +1,29 @@
+<%= form_for @movie do |f|%>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, :autofocus => true, :required => true %>
+
+  <%= f.label :cover %>
+  <%= f.url_field :cover %>
+
+  <%= f.label :year %>
+  <%= f.text_field :year %>
+
+  <%= f.label :duration %>
+  <%= f.number_field :duration %>
+
+  <%= f.label :genre_id %>
+  <%= f.number_field :genre_ids %>
+
+  <%= f.label :actor_id %>
+  <%= f.number_field :actor_ids %>
+
+  <%= f.label :director_id %>
+  <%= f.number_field :director_id %>
+
+  <%= f.label :synopsis %>
+  <%= f.text_field :synopsis %>
+
+  <%= f.submit %>
+
+<% end %>
