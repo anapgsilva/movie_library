@@ -1,5 +1,10 @@
+<%= link_to "Add New Genre", new_genre_path %>
+
 <h1>Movie Genres</h1>
 
-<% @genres.each do |genre| %>
+<p>Found <%= pluralize @genres.uniq.count, "genre" %>.</p>
+
+
+<% @genres.uniq.each do |genre| %>
   <h3><%= link_to genre.name, genre %></h3>
 <% end %>

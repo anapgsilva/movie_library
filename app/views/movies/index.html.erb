@@ -1,5 +1,11 @@
+<%= link_to "Add New Movie", new_movie_path %>
+
 <h1>Movies</h1>
 
-<% @movies.each do |movie| %>
-  <%= link_to image_tag(movie.cover, :class => "thumb"), movie %>
+<p>Found <%= pluralize @movies.count, "movie" %>.</p>
+
+<% if @movies.present? %>
+  <% @movies.each do |movie| %>
+    <%= link_to image_tag(movie.cover, :class => "thumb", :alt => movie.title), movie %>
+  <% end %>
 <% end %>

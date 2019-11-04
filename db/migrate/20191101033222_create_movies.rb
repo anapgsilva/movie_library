@@ -6,9 +6,9 @@ class CreateMovies < ActiveRecord::Migration[6.0]
       t.text :year
       t.integer :duration
       t.text :synopsis
-      t.integer :genre_id
       t.integer :director_id
-
+      t.integer :user_id
+      
       t.timestamps
     end
   end

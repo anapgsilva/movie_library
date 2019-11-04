@@ -2,7 +2,7 @@ class LibrariesController < ApplicationController
   before_action :check_for_login
 
   def index
-    @libraries = @current_user.libraries.all
+    @libraries = @current_user.libraries
   end
 
   def show
@@ -11,9 +11,6 @@ class LibrariesController < ApplicationController
 
   def edit
     @library = @current_user.libraries.find params[:id]
-    # Add a movie to a library from movie show page
-    @movie = Movie.find movie_params
-    @library << @movie
   end
 
   def update
@@ -41,7 +38,7 @@ class LibrariesController < ApplicationController
   private
 
   def library_params
-    params.require(:library).permit(:name, :user, :movies)
+    params.require(:library).permit(:name, :user_id, :movie_id)
   end
 
 end

@@ -5,7 +5,7 @@
 <% if @genre.movies.present? %>
   <h2>Movies</h2>
 
-  <%= @genre.movies do |movie| %>
+  <% @genre.movies.each do |movie| %>
     <%= link_to image_tag(movie.cover, :class => "thumb", :alt => movie.title), movie  %>
   <% end %>
 <% end %>

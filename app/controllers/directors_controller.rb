@@ -2,7 +2,7 @@ class DirectorsController < ApplicationController
   before_action :check_for_login
 
   def index
-    @directors = Director.all
+    @directors = @current_user.directors
   end
 
   def show
@@ -37,6 +37,6 @@ class DirectorsController < ApplicationController
 
   private
   def director_params
-    params.require(:director).permit(:name, :image, :movies)
+    params.require(:director).permit(:name, :image, :movie_id)
   end
 end

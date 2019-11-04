@@ -1,0 +1,2 @@
+class AddUserIdToMovie < ApplicationRecord
+end

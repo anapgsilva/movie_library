@@ -10,11 +10,11 @@
   <li>Year: <%= @movie.year %></li>
 
   <% if @movie.genres.present? %>
-    <li>Genre:<% @movie.genres.each do |genre| %> genre.name, <% end %></li>
+    <li>Genre:<% @movie.genres.each do |genre| %> <%= genre.name %>, <% end %></li>
   <% end %>
 
   <% if @movie.actors.present? %>
-    <li>Actors:<% @movie.actors.each do |actor| %> actor.name, <% end %></li>
+    <li>Actors:<% @movie.actors.each do |actor| %> <%=actor.name%>, <% end %></li>
   <% end %>
 
   <% if @movie.director.present? %>
@@ -22,30 +22,22 @@
   <% end %>
 
   <% if @movie.duration.present? %>
-    <li>Duration: <%= @movie.duration %></li>
+    <li>Duration: <%= @movie.duration %> mins</li>
   <% end %>
 
   <% if @movie.synopsis.present? %>
     <li>Synopsis: <%= @movie.synopsis %></li>
   <% end %>
+
+  <% if @movie.libraries.present? %>
+    <li>Found in:
+       <% @movie.libraries.each do |library| %>
+         <%= library.name %>,
+       <% end %>
+     </li>
+  <% end %>
+
 </ul>
-
-<form action="/library_path(<%= @current_user.library_id %>)" method="post">
-  <label>
-    Choose your library:
-    <select name="library_id">
-      <option value=""></option>
-      <% @current_user.libraries.each do |library| %>
-        <option value="<%= library.id %>">
-          <%= library.name %>
-        </option>
-      <% end %>
-    </select>
-    <button type="submit">Add</button>
-  </label>
-
-</form>
-
 
 <div class="controls">
   <%= link_to "Edit movie", edit_movie_path(@movie) %>

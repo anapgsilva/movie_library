@@ -1,6 +1,10 @@
+<%= link_to "Add New Library", new_library_path %>
+
 <h1>My Movie Libraries</h1>
 
+<p>Found <%= pluralize @libraries.count, "library" %>.</p>
 
-<% @libraries.each do |library| %>
+
+<% @libraries.sort.each do |library| %>
   <h3><%= link_to library.name, library %></h3>
 <% end %>

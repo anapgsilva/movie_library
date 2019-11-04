@@ -7,7 +7,7 @@
 <% if @director.movies.present? %>
   <h2>Movies</h2>
 
-  <%= @director.movies do |movie| %>
+  <% @director.movies.each do |movie| %>
     <%= link_to image_tag(movie.cover, :class => "thumb", :alt => movie.title), movie  %>
   <% end %>
 <% end %>

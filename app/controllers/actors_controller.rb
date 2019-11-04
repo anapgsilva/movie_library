@@ -2,7 +2,7 @@ class ActorsController < ApplicationController
   before_action :check_for_login
 
   def index
-    @actors = Actor.all
+    @actors = @current_user.actors
   end
 
   def show
@@ -37,6 +37,6 @@ class ActorsController < ApplicationController
 
   private
   def actor_params
-    params.require(:actor).permit(:name, :image, :movies)
+    params.require(:actor).permit(:name, :image, :movie_id)
   end
 end

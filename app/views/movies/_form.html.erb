@@ -9,20 +9,23 @@
   <%= f.label :year %>
   <%= f.text_field :year %>
 
-  <%= f.label :duration %>
+  <%= f.label "Duration (mins)" %>
   <%= f.number_field :duration %>
 
   <%= f.label :genre_id %>
-  <%= f.number_field :genre_ids %>
+  <%= f.select :genre_ids, Genre.pluck(:name, :id) %>
 
   <%= f.label :actor_id %>
-  <%= f.number_field :actor_ids %>
+  <%= f.select :actor_ids, Actor.pluck(:name, :id) %>
 
   <%= f.label :director_id %>
-  <%= f.number_field :director_id %>
+  <%= f.select :director_id, Director.pluck(:name, :id), :include_blank => true %>
 
   <%= f.label :synopsis %>
   <%= f.text_field :synopsis %>
+
+  <%= f.label :library_id %>
+  <%= f.select :library_ids, @libraries.pluck(:name, :id), :include_blank => true %>
 
   <%= f.submit %>
 

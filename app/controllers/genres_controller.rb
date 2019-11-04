@@ -2,7 +2,7 @@ class GenresController < ApplicationController
   before_action :check_for_login
 
   def index
-    @genres = Genre.all
+    @genres = @current_user.genres
   end
 
   def show
@@ -37,6 +37,6 @@ class GenresController < ApplicationController
 
   private
   def genre_params
-    params.require(:genre).permit(:name, :movies)
+    params.require(:genre).permit(:name, :movie_id)
   end
 end
