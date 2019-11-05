@@ -60,8 +60,8 @@ u1 = User.create(:name => "Ana", :email => 'ana@ga', :password => "chicken", :ad
 
 puts "Movies into User"
 u1.movies << m1
-u2.movies << m2
-u3.movies << m3
+u1.movies << m2
+u1.movies << m3
 
 puts "Directors and Movies"
 d1.movies << m1
