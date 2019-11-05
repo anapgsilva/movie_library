@@ -8,7 +8,8 @@ class ActorsController < ApplicationController
   end
 
   def show
-    @actor = Actor.find params[:id]
+    @actors = @current_user.actors
+    @actor = @actors.find params[:id]
   end
 
   private

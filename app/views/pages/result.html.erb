@@ -3,9 +3,9 @@
 <h1>Movies found</h1>
 
 <% if !@imdb_result.nil? %>
-  <p>Found <%= pluralize @imdb_result.uniq.count, "movie" %>.</p>
+  <p>Found <%= pluralize @imdb_result.count, "movie" %>.</p>
   <ol>
-  <% @imdb_result.uniq.each do |movie|%>
+  <% @imdb_result.each do |movie|%>
     <% if movie['imdbID'].present? %>
       <li>
         <h4><%= link_to movie["Title"], "https://www.imdb.com/title/#{movie["imdbID"]}/" %></h4>
@@ -19,9 +19,9 @@
   </ol>
 
 <% elsif !@movies_result.nil? %>
-  <p>Found <%= pluralize @movies_result.uniq.count, "movie" %>.</p>
+  <p>Found <%= pluralize @movies_result.count, "movie" %>.</p>
   <ol>
-  <% @movies_result.uniq.each do |movie|%>
+  <% @movies_result.each do |movie|%>
       <li>
         <h4><%= link_to movie.title, movie_path(movie.id) %></h4>
         <% if movie.cover.present? %>
