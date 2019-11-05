@@ -49,10 +49,10 @@ g6 = Genre.create(:name => 'Drama')
 puts "There are #{Genre.count} genres."
 #
 # #
-# Library.destroy_all
-# puts "Creating libraries"
-#
-# l1 = Library.create(:name => 'Blu-rays', :user_id => 5)
+Library.destroy_all
+puts "Creating libraries"
+
+l1 = Library.create(:name => 'Blu-rays', :user_id => 5)
 # l2 = Library.create(:name => 'DVDs', :user_id => 5)
 #
 # puts "There are #{Library.count} libraries."

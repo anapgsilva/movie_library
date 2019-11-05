@@ -2,7 +2,7 @@
 
 <h1>My Movie Libraries</h1>
 
-<p>Found <%= pluralize @libraries.count, "library" %>.</p>
+<p>You have <%= pluralize @libraries.count, "library" %>.</p>
 
 
 <% @libraries.sort.each do |library| %>

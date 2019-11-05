@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_013605) do
+ActiveRecord::Schema.define(version: 2019_11_01_064236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,6 @@ ActiveRecord::Schema.define(version: 2019_11_04_013605) do
   create_table "actors_movies", id: false, force: :cascade do |t|
     t.integer "actor_id"
     t.integer "movie_id"
-  end
-
-  create_table "add_movie_imdb_id_to_movies", force: :cascade do |t|
-    t.integer "movie_imdbID"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "directors", force: :cascade do |t|
@@ -71,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_11_04_013605) do
     t.text "synopsis"
     t.integer "director_id"
     t.integer "user_id"
+    t.text "imdbID"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -84,9 +79,9 @@ ActiveRecord::Schema.define(version: 2019_11_04_013605) do
     t.text "name"
     t.text "email"
     t.string "password_digest"
+    t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "admin", default: false
   end
 
 end

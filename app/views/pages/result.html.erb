@@ -1,20 +1,36 @@
+<%= link_to "Back to Search", search_path %>
+
 <h1>Movies found</h1>
 
-
-<% unless @top5.nil? %>
+<% if !@imdb_result.nil? %>
+  <p>Found <%= pluralize @imdb_result.uniq.count, "movie" %>.</p>
   <ol>
-  <% @top5.uniq.each do |movie|%>
-    <li>
-      <h4><%= link_to movie["Title"], "https://www.imdb.com/title/#{movie["imdbID"]}/" %></h4>
-
-      <% if movie["Poster"].include? ("http") %>
-        <%= image_tag movie["Poster"], :class => "thumb", :alt => movie["Title"] %>
-      <% end %>
-
-      <%= link_to "Add movie", "/movies/new/#{movie["imdbID"]}" %>
-
-    </li>
+  <% @imdb_result.uniq.each do |movie|%>
+    <% if movie['imdbID'].present? %>
+      <li>
+        <h4><%= link_to movie["Title"], "https://www.imdb.com/title/#{movie["imdbID"]}/" %></h4>
+        <% if movie["Poster"].include? ("http") %>
+          <%= image_tag movie["Poster"], :class => "thumb", :alt => movie["Title"] %>
+        <% end %>
+        <%= link_to "Add movie", "/movies/#{movie["imdbID"]}" %>
+      </li>
+    <% end %>
   <% end %>
-
   </ol>
+
+<% elsif !@movies_result.nil? %>
+  <p>Found <%= pluralize @movies_result.uniq.count, "movie" %>.</p>
+  <ol>
+  <% @movies_result.uniq.each do |movie|%>
+      <li>
+        <h4><%= link_to movie.title, movie_path(movie.id) %></h4>
+        <% if movie.cover.present? %>
+          <%= image_tag movie.cover, :class => "thumb", :alt => movie.title %>
+        <% end %>
+      </li>
+  <% end %>
+  </ol>
+
+<% else %>
+  <p><%= @message %></p>
 <% end %>

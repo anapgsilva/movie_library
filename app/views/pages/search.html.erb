@@ -1,10 +1,19 @@
 <h1>Search for Movies</h1>
 
+<p>Choose the criteria:</p>
+
 <form action="/result">
 
   <label>
-    Movie Title:
-    <input type="text" placeholder="Searching text" name="title">
+    <select name="table">
+      <option value="IMDB">IMDB</option>
+      <option value="Movie">My Movies</option>
+      <option value="Actor">Actor Name</option>
+      <option value="Director">Director Name</option>
+      <option value="Genre">Genre</option>
+      <option value="Library">My Libraries</option>
+    </select>
+    <input type="text" placeholder="What are you looking for?" name="query">
   </label>
 
   <button type="submit">Get movie</button>

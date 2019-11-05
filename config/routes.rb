@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   get '/search' => 'pages#search'
   get '/result' => 'pages#result'
-  # post '/result' => 'pages#result'
+  post '/result' => 'movies#show'
+
+  put '/movies/:id/add_or_remove' => 'libraries#add_or_remove',:as => 'add_or_remove_from_library'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

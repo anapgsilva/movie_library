@@ -26,13 +26,31 @@ class LibrariesController < ApplicationController
   def create
     library = Library.create library_params
     @current_user.libraries << library
-    redirect_to library
+    redirect_to libraries_path
   end
 
   def destroy
     @library = Library.find params[:id]
     @library.destroy
     redirect_to libraries_path
+  end
+
+  def add_or_remove
+    @movie = Movie.find params[:id]
+    action = params[:commit]
+
+    if action == "Add to"
+      params[:library_id].each do |lib_id|
+        library = Library.find lib_id
+        library.movies << @movie unless library.movies.include? @movie
+      end
+    elsif action == "Remove from"
+      params[:library_id].each do |lib_id|
+        library = Library.find lib_id
+        library.movies.delete(@movie) if library.movies.include? @movie
+      end
+    end
+    redirect_to @movie
   end
 
   private

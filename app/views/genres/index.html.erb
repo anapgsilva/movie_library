@@ -1,8 +1,7 @@
-<%= link_to "Add New Genre", new_genre_path %>
 
 <h1>Movie Genres</h1>
 
-<p>Found <%= pluralize @genres.uniq.count, "genre" %>.</p>
+<p>You have <%= pluralize @genres.uniq.count, "genre" %>.</p>
 
 
 <% @genres.uniq.each do |genre| %>

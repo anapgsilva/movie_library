@@ -1,8 +1,7 @@
-<%= link_to "Add New Actor", new_actor_path %>
 
 <h1>Actors</h1>
 
-<p>Found <%= pluralize @actors.uniq.count, "actor" %>.</p>
+<p>You have <%= pluralize @actors.uniq.count, "actor" %>.</p>
 
 <% @actors.uniq.each do |actor| %>
     <h3><%= link_to actor.name, actor %></h3>

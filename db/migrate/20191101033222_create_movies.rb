@@ -8,7 +8,8 @@ class CreateMovies < ActiveRecord::Migration[6.0]
       t.text :synopsis
       t.integer :director_id
       t.integer :user_id
-      
+      t.text :imdbID
+
       t.timestamps
     end
   end

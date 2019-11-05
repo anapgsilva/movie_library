@@ -1,9 +1,6 @@
-<%= link_to "Back", actors_path %>
+<%= link_to "Back to Actors", actors_path %>
 
 <h1><%= @actor.name %></h1>
-
-
-<%= image_tag @actor.image, :class => "feature", :alt => @actor.name if @actor.image.present? %>
 
 
 <% if @actor.movies.present? %>
@@ -14,10 +11,3 @@
   <% end %>
 
 <% end %>
-
-
-<div class="controls">
-  <%= link_to "Edit actor", edit_actor_path(@actor) %>
-  <%= link_to "Delete actor", @actor, :method => "delete", :data => {:confirm => "Are you sure you want to delete #{@actor.name}"} %>
-
-</div>

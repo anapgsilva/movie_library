@@ -1,8 +1,7 @@
-<%= link_to "Add New Director", new_director_path %>
 
 <h1>Movie Directors</h1>
 
-<p>Found <%= pluralize @directors.uniq.count, "director" %>.</p>
+<p>You have <%= pluralize @directors.uniq.count, "director" %>.</p>
 
 
 <% @directors.uniq.each do |director| %>

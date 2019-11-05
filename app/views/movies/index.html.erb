@@ -1,8 +1,7 @@
-<%= link_to "Add New Movie", new_movie_path %>
 
 <h1>Movies</h1>
 
-<p>Found <%= pluralize @movies.count, "movie" %>.</p>
+<p>You have <%= pluralize @movies.count, "movie" %>.</p>
 
 <% if @movies.present? %>
   <% @movies.each do |movie| %>

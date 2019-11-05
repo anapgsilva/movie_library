@@ -13,7 +13,9 @@
   <%= f.number_field :duration %>
 
   <%= f.label :genre_id %>
-  <%= f.select :genre_ids, Genre.pluck(:name, :id) %>
+  <%= f.select :genre_ids, options_from_collection_for_select(Genre.all, :id, :name), {}, {multiple: true, size: 5} %>
+
+<!-- f.text_field :genre_ids, Genre.pluck(:name, :id) -->
 
   <%= f.label :actor_id %>
   <%= f.select :actor_ids, Actor.pluck(:name, :id) %>

@@ -1,2 +1,0 @@
-class AddMovieImdbIdToMovie < ApplicationRecord
-end

@@ -1,2 +1,0 @@
-class AddUserIdToMovie < ApplicationRecord
-end

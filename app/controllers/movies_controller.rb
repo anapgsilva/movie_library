@@ -6,7 +6,15 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find params[:id]
+    id = params[:id]
+
+    if (Movie.find_by :id => id) || (Movie.find_by :imdbID => id)
+      @movie = Movie.find params[:id]
+    else
+      create_movie id
+    end
+
+    @libraries = @current_user.libraries
   end
 
   def edit
@@ -23,8 +31,31 @@ class MoviesController < ApplicationController
   def new
     @movie = Movie.new
     @libraries = @current_user.libraries
-    movie_data = get_movie params[:imdbID]
-    movie = movie_data.body
+  end
+
+  def create
+    @movie = Movie.new movie_params
+    @current_user.movies << @movie
+    @movie.save
+    redirect_to @movie
+  end
+
+  def destroy
+    @movie = Movie.find params[:id]
+    @movie.destroy
+    redirect_to movies_path
+  end
+
+  private
+  def movie_params
+    params.require(:movie).permit(:title, :cover, :year, :duration, :synopsis, :genre_ids, :actor_ids, :director_id, :library_ids, :user_id, :imdbID)
+    # add => [] for many to many associations
+  end
+
+  def create_movie imdbID
+    @movie = Movie.new
+    @movie_data = get_movie imdbID
+    movie = @movie_data.body
     @movie.title = movie["Title"]
     @movie.cover = movie["Poster"]
     @movie.year = movie["Year"]
@@ -64,24 +95,8 @@ class MoviesController < ApplicationController
         @movie.actors << new_actor
       end
     end
-  end
 
-  def create
-    @movie = Movie.new movie_params
     @current_user.movies << @movie
-    @movie.save
-    redirect_to @movie
   end
-
-  def destroy
-    @movie = Movie.find params[:id]
-    @movie.destroy
-    redirect_to movies_path
-  end
-
-  private
-  def movie_params
-    params.require(:movie).permit(:title, :cover, :year, :duration, :synopsis, :genre_ids, :actor_ids, :director_id, :library_ids, :user_id, :imdbID)
-  end
-
+  redirect_to movie_path(@movie.id)
 end
