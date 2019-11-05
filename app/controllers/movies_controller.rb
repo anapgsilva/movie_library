@@ -98,6 +98,6 @@ class MoviesController < ApplicationController
     end
 
     @current_user.movies << @movie
-  end
-  redirect_to movie_path(@movie.id)
+    redirect_to movie_path(@movie.id)
+  end  
 end
