@@ -3,6 +3,7 @@ class MoviesController < ApplicationController
 
   def index
     @movies = @current_user.movies
+    @movies = @movies.sort_by { |movie| movie[:title]}
   end
 
   def show

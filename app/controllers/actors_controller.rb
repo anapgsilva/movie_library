@@ -3,6 +3,8 @@ class ActorsController < ApplicationController
 
   def index
     @actors = @current_user.actors
+    @actors = @actors.sort_by { |actor| actor[:title]}
+
   end
 
   def show
