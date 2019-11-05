@@ -56,7 +56,7 @@ l1 = Library.create(:name => 'Blu-rays', :user_id => 1)
 # l2 = Library.create(:name => 'DVDs', :user_id => 5)
 #
 # puts "There are #{Library.count} libraries."
-u1 = Create.user(:name => "Ana", :email => 'ana@ga', :password => "chicken")
+u1 = User.create(:name => "Ana", :email => 'ana@ga', :password => "chicken")
 
 
 puts "Directors and Movies"
