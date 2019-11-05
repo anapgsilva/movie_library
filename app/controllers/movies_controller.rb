@@ -37,7 +37,7 @@ class MoviesController < ApplicationController
   def add_movie
     imdbID = params[:id]
 
-    if (Movie.all.find_by :imdbID => imdbID)
+    if (Movie.find_by :imdbID => imdbID)
       @movie = Movie.find_by :imdbID => imdbID
 
     else
