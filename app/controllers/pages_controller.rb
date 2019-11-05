@@ -17,7 +17,7 @@ class PagesController < ApplicationController
     case table
     when 'IMDB'
       url = "https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=#{query.downcase.split.join("+")}"
-      movies_data = get_movies url
+      movies_data = Movie.get_movies url
       if movies_data.body["Search"] != nil
         @imdb_result = movies_data.body["Search"][0..4]
       else

@@ -3,6 +3,7 @@ class GenresController < ApplicationController
 
   def index
     @genres = @current_user.genres
+    @genres = @genres.sort_by { |genre| genre[:name]}
   end
 
   def show

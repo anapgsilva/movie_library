@@ -2,7 +2,8 @@ class LibrariesController < ApplicationController
   before_action :check_for_login
 
   def index
-    @libraries = @current_user.libraries
+    libraries = @current_user.libraries
+    @libraries = libraries.sort_by { |library| library[:name]}
   end
 
   def show

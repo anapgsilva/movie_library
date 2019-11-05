@@ -3,6 +3,8 @@ class DirectorsController < ApplicationController
 
   def index
     @directors = @current_user.directors
+    @directors = @directors.sort_by { |director| director[:name]}
+
   end
 
   def show

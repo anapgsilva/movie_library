@@ -5,7 +5,7 @@
 <p>Found <%= pluralize @users.count, "user" %>.</p>
 
 <ul>
-  <% @users.each do |user| %>
+  <% @users.sort.each do |user| %>
   <li><%= user.name %>, <%= user.email %></li>
   <% end %>
 </ul>

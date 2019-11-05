@@ -2,6 +2,10 @@
 
 <h1><%= @movie.title %></h1>
 
+<% if @message.present? %>
+  <h3><%= @message %></h3>
+<% end %>
+
 <div class="controls">
   <%= link_to "Edit movie", edit_movie_path(@movie) %>
   <%= link_to "Delete movie", @movie, :method => "delete", :data => {:confirm => "Are you sure you want to delete #{@movie.title}"} %>
@@ -35,7 +39,7 @@
   <% end %>
 
   <% if @movie.libraries.present? %>
-    <li>Found in:
+    <li>Present in <%= pluralize @movie.libraries.count, "library" %>:
        <% @movie.libraries.each do |library| %>
          <%= library.name %>,
        <% end %>

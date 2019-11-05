@@ -5,6 +5,6 @@
 <p>You have <%= pluralize @libraries.count, "library" %>.</p>
 
 
-<% @libraries.sort.each do |library| %>
+<% @libraries.each do |library| %>
   <h3><%= link_to library.name, library %></h3>
 <% end %>
