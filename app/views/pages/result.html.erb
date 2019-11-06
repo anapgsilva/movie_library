@@ -2,23 +2,7 @@
 
 <h1>Movies found</h1>
 
-<% if !@imdb_result.nil? %>
-  <p>Found <%= pluralize @imdb_result.count, "movie" %>.</p>
-  <ol>
-  <% @imdb_result.each do |movie|%>
-    <% if movie['imdbID'].present? %>
-      <li>
-        <h4><%= link_to movie["Title"], "https://www.imdb.com/title/#{movie["imdbID"]}/" %></h4>
-        <% if movie["Poster"].include? ("http") %>
-          <%= image_tag movie["Poster"], :class => "thumb", :alt => movie["Title"] %>
-        <% end %>
-        <%= link_to "Add movie", add_movie_path(movie["imdbID"]) %>
-      </li>
-    <% end %>
-  <% end %>
-  </ol>
-
-<% elsif !@movies_result.nil? %>
+<% if !@movies_result.nil? %>
   <p>Found <%= pluralize @movies_result.count, "movie" %>.</p>
   <ol>
   <% @movies_result.each do |movie|%>

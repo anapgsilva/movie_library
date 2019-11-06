@@ -1,0 +1,16 @@
+<h1>Which movie shall I watch tonight?</h1>
+
+<%= form_tag '/suggestion', :method => 'get' do %>
+
+  <%= label_tag "Actor preference:" %>
+  <%= text_field_tag :actor, "actor name" %>
+
+  <%= label_tag "Genre preference:" %>
+  <%= text_field_tag :genre, "genre name" %>
+
+  <%= label_tag "Director preference:" %>
+  <%= text_field_tag :director, "director name" %>
+
+  <%= submit_tag "Find me a movie" %>
+
+<% end %>

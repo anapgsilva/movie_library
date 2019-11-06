@@ -35,16 +35,21 @@ class MoviesController < ApplicationController
   end
 
   def add_movie
-    imdbID = params[:id]
+    # raise 'hell'
+    imdbID = params[:format]
+    @library = @current_user.libraries.find params[:id]
 
     if (Movie.find_by :imdbID => imdbID)
       @movie = Movie.find_by :imdbID => imdbID
-
+      unless @library.movies.include? @movie
+        @library.movies << @movie
+      end
     else
       @movie = Movie.create_movie_from_imdb imdbID
       @current_user.movies << @movie
+      @library.movies << @movie
     end
-    redirect_to movie_path(@movie.id)
+    redirect_to library_path(@library.id)
   end
 
   def destroy

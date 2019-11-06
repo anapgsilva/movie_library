@@ -1,21 +1,11 @@
-<h1>Search for Movies</h1>
+<h1>Search My Movies</h1>
 
-<p>Choose the criteria:</p>
+<%= form_tag result_path, :method => 'get' do %>
 
-<form action="/result">
+  <%= label_tag "Find a movie by title, actor, director, gender or library:" %>
 
-  <label>
-    <select name="table">
-      <option value="IMDB">IMDB</option>
-      <option value="Movie">My Movies</option>
-      <option value="Actor">Actor Name</option>
-      <option value="Director">Director Name</option>
-      <option value="Genre">Genre</option>
-      <option value="Library">My Libraries</option>
-    </select>
-    <input type="text" placeholder="What are you looking for?" name="query">
-  </label>
+  <%= text_field_tag :query, params[:query] %>
 
-  <button type="submit">Get movie</button>
+  <%= submit_tag "Get movie", name: nil %>
 
-</form>
+<% end %>

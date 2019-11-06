@@ -8,6 +8,18 @@ class LibrariesController < ApplicationController
 
   def show
     @library = @current_user.libraries.find params[:id]
+
+    if params[:query].present?
+      query = params[:query].titleize
+      url = "https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=#{query.downcase.split.join("+")}"
+      movies_data = Movie.get_movies url
+
+      if movies_data.body["Search"] != nil
+        @imdb_result = movies_data.body["Search"][0..9]
+      else
+        @message = "No results were found."
+      end
+    end
   end
 
   def edit

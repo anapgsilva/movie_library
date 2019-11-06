@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_action :check_for_login
+
   def home
   end
 
@@ -7,37 +9,39 @@ class PagesController < ApplicationController
 
   def result
     query = params[:query].titleize
-    table = params[:table]
     @movies = @current_user.movies
-    @actors = @current_user.actors
-    @directors = @current_user.directors
-    @genres = @current_user.genres
-    @libraries = @current_user.libraries
 
-    case table
-    when 'IMDB'
-      url = "https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=#{query.downcase.split.join("+")}"
-      movies_data = Movie.get_movies url
-      if movies_data.body["Search"] != nil
-        @imdb_result = movies_data.body["Search"][0..4]
-      else
-        @imdb_result = nil
+    @movies_result = @movies.text_search query
+    @message = "No results were found." if @movies_result.nil?
+    
+  end
+
+  def suggestion
+    actor_query = params[:actor]
+    director_query = params[:director]
+    genre_query = params[:genre]
+
+    @actors = @current_user.actors
+    @genres = @current_user.genres
+    @directors = @current_user.directors
+
+    if actor_query.present?
+      if @actors.include? actor_query
+        tip = @actors.movies.sample
       end
-    when 'Movie'
-      @movies_result = @movies.find_by :title => query
-    when 'Actor'
-      @result = @actors.find_by :name => query
-    when 'Director'
-      @result = @directors.find_by :name => query
-    when 'Genre'
-      @result = @genres.find_by :name => query
-    when 'Library'
-      @result = @libraries.find_by :name => query
     end
-    if @result != nil
-      @movies_result = @result.movies
-    else
-      @message = "No results were found."
+
+    if genre_query.present?
+      if @genres.include? genre_query
+        tip = @genres.movies.sample
+      end
+    end
+
+    if director_query.present?
+      if @directors.include? director_query
+        tip = @directors.movies.sample
+      end
     end
   end
+
 end

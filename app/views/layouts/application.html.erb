@@ -32,12 +32,13 @@
 
       <% if @current_user.present? %>
         <nav class="user">
-          <%= link_to "Search", search_path %>
           <%= link_to "My Libraries", libraries_path %>
-          <%= link_to "My Movies", movies_path %>
+          <%= link_to "Search MyDB", search_path %>
+          <%= link_to "All Movies", movies_path %>
           <%= link_to "Actors", actors_path %>
           <%= link_to "Genres", genres_path %>
           <%= link_to "Directors", directors_path %>
+          <%= link_to "Movie tip", suggestion_path %>
         </nav>
       <% end %>
 

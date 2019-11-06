@@ -3,13 +3,47 @@
 <h1><%= @library.name %></h1>
 
 
-<% if @library.movies.present? %>
 
+<%= form_tag library_path, :method => "get" do %>
+  <%= hidden_field_tag :id, @library.id %>
+  <%= label_tag "Add a movie:" %>
+  <%= text_field_tag :query %>
+  <%= submit_tag "Get movie" %>
+<% end %>
+
+
+
+<% if @imdb_result.present? %>
+  <h3>Found <%= pluralize @imdb_result.count, "movie" %>.</h3>
+  <ol>
+  <% @imdb_result.each do |movie|%>
+    <% if movie['imdbID'].present? %>
+      <li>
+        <h4><%= link_to movie["Title"], "https://www.imdb.com/title/#{movie["imdbID"]}/" %></h4>
+        <% if movie["Poster"].include? ("http") %>
+          <%= image_tag movie["Poster"], :class => "thumb", :alt => movie["Title"] %>
+        <% end %>
+        <%= link_to "Add movie", add_movie_path(movie["imdbID"], :id => @library.id) %>
+      </li>
+    <% end %>
+  <% end %>
+  </ol>
+
+<% else %>
+  <p><%= @message %></p>
+<% end %>
+
+
+
+
+
+<% if @library.movies.present? %>
+  <h3>Movies currently in your library:</h3>
   <% @library.movies.each do |movie| %>
     <%= link_to image_tag(movie.cover, :class => "thumb", :alt => movie.title), movie  %>
   <% end %>
-
 <% end %>
+
 
 
 
