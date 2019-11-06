@@ -56,7 +56,7 @@ l1 = Library.create(:name => 'Blu-rays', :user_id => 1)
 # l2 = Library.create(:name => 'DVDs', :user_id => 5)
 #
 # puts "There are #{Library.count} libraries."
-Users.destroy.all
+User.destroy.all
 u1 = User.create(:name => "Ana", :email => 'ana@ga', :password => "chicken", :admin => true)
 
 puts "Movies into User"
