@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   before_action :check_for_login
+  before_action :save_my_previous_url
+
 
   def home
   end
@@ -8,38 +10,76 @@ class PagesController < ApplicationController
   end
 
   def result
-    query = params[:query].titleize
-    @movies = @current_user.movies
-
-    @movies_result = @movies.text_search query
-    @message = "No results were found." if @movies_result.nil?
-    
+    if params[:query].present?
+      query = params[:query].titleize
+      @movies = @current_user.movies
+      #search query in movies and associated models
+      @movies_result = @movies.text_search query
+      #creates message if no results
+      @message = "No results were found." if @movies_result.nil?
+    else
+      @message = "Find movies by title, actors, genres or director."
+    end
   end
 
+  #Suggest a movie to watch
   def suggestion
-    actor_query = params[:actor]
-    director_query = params[:director]
-    genre_query = params[:genre]
+    #gets query from user
+    @actor_query = params[:actor]
+    @director_query = params[:director]
+    @genre_query = params[:genre]
+    #gets the user movies
+    @movies = @current_user.movies
 
-    @actors = @current_user.actors
-    @genres = @current_user.genres
-    @directors = @current_user.directors
+    if params[:commit]
 
-    if actor_query.present?
-      if @actors.include? actor_query
-        tip = @actors.movies.sample
+      @actor_movietip = []
+      if @actor_query.present?
+        actor_mv = @movies.text_search @actor_query
+        if actor_mv
+          actor_mv.each do |movie|
+            @actor_movietip.push(movie)
+          end
+          @actor_movietip.uniq! if @actor_movietip.present?
+        end
       end
-    end
 
-    if genre_query.present?
-      if @genres.include? genre_query
-        tip = @genres.movies.sample
+      @genre_movietip = []
+      if @genre_query.present?
+        genre_mv = @movies.text_search @genre_query
+        if genre_mv
+          genre_mv.each do |movie|
+            @genre_movietip.push(movie)
+          end
+          @genre_movietip.uniq! if @genre_movietip.present?
+        end
       end
-    end
 
-    if director_query.present?
-      if @directors.include? director_query
-        tip = @directors.movies.sample
+      @director_movietip = []
+      if @director_query.present?
+        director_mv = @movies.text_search @director_query
+        if director_mv
+          director_mv.each do |movie|
+            @director_movietip.push(movie)
+          end
+          @director_movietip.uniq! if @director_movietip.present?
+        end
+      end
+
+      movie_tips = []
+      movie_tips = @actor_movietip + @genre_movietip + @director_movietip
+
+      if movie_tips == []
+        @message = "Could not find any match to watch."
+
+      elsif
+        @movie_tip = movie_tips.group_by{ |movie| movie }.select { |k, v| v.size > 2 }.map(&:first)
+
+        @movie_tip = movie_tips.group_by{ |movie| movie }.select { |k, v| v.size > 1 }.map(&:first) unless @movie_tip.present?
+
+        @movie_tip = movie_tips.group_by{ |movie| movie }.select { |k, v| v.size > 0 }.map(&:first) unless @movie_tip.present?
+
+        @movie_tip = @movie_tip.sample
       end
     end
   end

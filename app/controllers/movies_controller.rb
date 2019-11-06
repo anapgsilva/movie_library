@@ -1,5 +1,7 @@
 class MoviesController < ApplicationController
   before_action :check_for_login
+  before_action :save_my_previous_url
+
 
   def index
     @movies = @current_user.movies
@@ -35,7 +37,6 @@ class MoviesController < ApplicationController
   end
 
   def add_movie
-    # raise 'hell'
     imdbID = params[:format]
     @library = @current_user.libraries.find params[:id]
 

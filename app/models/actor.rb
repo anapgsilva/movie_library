@@ -4,6 +4,7 @@ class Actor < ApplicationRecord
   has_many :directors, :through => :movies
   has_many :libraries, :through => :movies
 
+  #pg search gem setup
   include PgSearch
   pg_search_scope :search, against: [:name],
     using: {tsearch: {dictionary: 'english'}},
@@ -16,5 +17,6 @@ class Actor < ApplicationRecord
       scoped
     end
   end
+  #end of setup
 
 end

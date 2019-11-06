@@ -1,7 +1,8 @@
 class ActorsController < ApplicationController
   before_action :check_for_login
+  before_action :save_my_previous_url
 
-  def index
+  def index #by alphabetical order
     @actors = @current_user.actors
     @actors = @actors.sort_by { |actor| actor[:name]}
   end

@@ -5,6 +5,7 @@ class Library < ApplicationRecord
   has_many :genres, :through => :movies
   has_many :directors, :through => :movies
 
+  #pg search gem
   include PgSearch
   pg_search_scope :search, against: [:name],
     using: {tsearch: {dictionary: 'english'}},
@@ -17,4 +18,5 @@ class Library < ApplicationRecord
       scoped
     end
   end
+  #end of pg search gem
 end

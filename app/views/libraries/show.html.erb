@@ -1,4 +1,4 @@
-<%= link_to "Back", libraries_path %>
+<%= link_to "Back", @back_url %>
 
 <h1><%= @library.name %></h1>
 
@@ -33,6 +33,10 @@
   <p><%= @message %></p>
 <% end %>
 
+<div class="controls">
+  <%= link_to "Edit library", edit_library_path(@library) %>
+  <%= link_to "Delete library", @library, :method => "delete", :data => {:confirm => "Are you sure you want to delete #{@library.name}"} %>
+</div>
 
 
 
@@ -43,11 +47,3 @@
     <%= link_to image_tag(movie.cover, :class => "thumb", :alt => movie.title), movie  %>
   <% end %>
 <% end %>
-
-
-
-
-<div class="controls">
-  <%= link_to "Edit library", edit_library_path(@library) %>
-  <%= link_to "Delete library", @library, :method => "delete", :data => {:confirm => "Are you sure you want to delete #{@library.name}"} %>
-</div>

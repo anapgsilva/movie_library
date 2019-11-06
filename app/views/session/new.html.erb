@@ -1,4 +1,10 @@
-<h1>Log In</h1>
+<h1>Welcome to The Movie Library</h1>
+
+<p>Organise your movies all in one place. Make your own libraries.</p>
+<p>Search your movies by actor, director or genre. Or just ask what movie should you watch tonight?</p>
+
+<div class="log_form">
+<h2>Log In</h2>
 
 <% if flash[:error].present? %>
   <p><%= flash[:error] %></p>
@@ -13,3 +19,4 @@
 
   <%= submit_tag "Sign in" %>
 <% end %>
+</div>

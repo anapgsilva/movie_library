@@ -4,6 +4,7 @@ class Director < ApplicationRecord
   has_many :genres, :through => :movies
   has_many :libraries, :through => :movies
 
+  #pg search gem
   include PgSearch
   pg_search_scope :search, against: [:name],
     using: {tsearch: {dictionary: 'english'}},
@@ -16,5 +17,5 @@ class Director < ApplicationRecord
       scoped
     end
   end
-
+  #end of pg search gem
 end

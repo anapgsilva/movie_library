@@ -16,4 +16,9 @@ class ApplicationController < ActionController::Base
   def check_for_admin
     redirect_to root_path unless @current_user.present? && @current_user.admin?
   end
+
+  def save_my_previous_url
+    session[:my_previous_url] = URI(request.referer || '').path
+    @back_url = session[:my_previous_url]
+  end
 end

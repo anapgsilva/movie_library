@@ -1,15 +1,15 @@
-<%= link_to "Back to Search", search_path %>
-
-<h1>Movies found</h1>
+<%= link_to "Back", @back_url %>
 
 <% if !@movies_result.nil? %>
+  <h1>Movies found</h1>
+
   <p>Found <%= pluralize @movies_result.count, "movie" %>.</p>
   <ol>
   <% @movies_result.each do |movie|%>
       <li>
         <h4><%= link_to movie.title, movie_path(movie.id) %></h4>
         <% if movie.cover.present? %>
-          <%= image_tag movie.cover, :class => "thumb", :alt => movie.title %>
+          <%= link_to image_tag(movie.cover, :class => "thumb", :alt => movie.title), movie %>
         <% end %>
       </li>
   <% end %>

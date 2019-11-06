@@ -1,19 +1,22 @@
 class LibrariesController < ApplicationController
   before_action :check_for_login
+  before_action :save_my_previous_url
 
-  def index
+  def index #by alphabetical order
     libraries = @current_user.libraries
     @libraries = libraries.sort_by { |library| library[:name]}
   end
 
-  def show
+  def show #show library contents
     @library = @current_user.libraries.find params[:id]
 
+    #shows IMDB search results
     if params[:query].present?
       query = params[:query].titleize
       url = "https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=#{query.downcase.split.join("+")}"
-      movies_data = Movie.get_movies url
+      movies_data = Movie.get_movies url #JSON
 
+      #if no data, generate message
       if movies_data.body["Search"] != nil
         @imdb_result = movies_data.body["Search"][0..9]
       else
@@ -48,6 +51,7 @@ class LibrariesController < ApplicationController
     redirect_to libraries_path
   end
 
+  # add or remove movies from a library
   def add_or_remove
     @movie = Movie.find params[:id]
     action = params[:commit]
@@ -65,6 +69,7 @@ class LibrariesController < ApplicationController
     end
     redirect_to @movie
   end
+
 
   private
 

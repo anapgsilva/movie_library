@@ -20,6 +20,7 @@ class Movie < ApplicationRecord
   end
   #end of pg gem
 
+  #get specific movie from API
   def self.get_movie imdbID
 
     url = "https://movie-database-imdb-alternative.p.rapidapi.com/?i=#{imdbID}&r=json"
@@ -30,6 +31,7 @@ class Movie < ApplicationRecord
       }
   end
 
+  #get movie search results from API
   def self.get_movies url
     Unirest.get url, headers:{
         "X-RapidAPI-Host" => "movie-database-imdb-alternative.p.rapidapi.com",
@@ -37,6 +39,7 @@ class Movie < ApplicationRecord
       }
   end
 
+  #create a movie in users from imdbID value
   def self.create_movie_from_imdb imdbID
     @movie = Movie.new
     @movie_data = Movie.get_movie imdbID
@@ -48,6 +51,7 @@ class Movie < ApplicationRecord
     @movie.synopsis = movie["Plot"]
     @movie.imdbID = movie["imdbID"]
 
+    #check if Director already exists in user or not, before creating new Director
     result = Director.find_by :name => movie["Director"]
     if result
       @movie.director_id = result.id
@@ -58,6 +62,7 @@ class Movie < ApplicationRecord
       @movie.director_id = new_director.id
     end
 
+    #check if Genre already exists in user or not, before creating new Genre
     movie["Genre"].split(", ").each do |genre|
       result = Genre.find_by :name => genre
       if result
@@ -70,6 +75,7 @@ class Movie < ApplicationRecord
       end
     end
 
+    #check if Actors already exist in user or not, before creating new Actors
     movie["Actors"].split(", ").each do |actor|
       result = Actor.find_by :name => actor
       if result

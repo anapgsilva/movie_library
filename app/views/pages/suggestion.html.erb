@@ -1,16 +1,39 @@
+<%= link_to "Back", @back_url %>
+
 <h1>Which movie shall I watch tonight?</h1>
 
+<% unless @movie_tip.present? %>
 <%= form_tag '/suggestion', :method => 'get' do %>
 
   <%= label_tag "Actor preference:" %>
-  <%= text_field_tag :actor, "actor name" %>
+  <%= text_field_tag :actor %>
 
   <%= label_tag "Genre preference:" %>
-  <%= text_field_tag :genre, "genre name" %>
+  <%= text_field_tag :genre %>
 
   <%= label_tag "Director preference:" %>
-  <%= text_field_tag :director, "director name" %>
+  <%= text_field_tag :director %>
 
   <%= submit_tag "Find me a movie" %>
+<% end %>
+<% end %>
+
+
+<% if @message.present?  %>
+  <p><%= @message %></p>
+<% end %>
+
+
+<% if @movie_tip.present? %>
+
+  <%= form_tag '/suggestion', :method => 'get' do %>
+    <%= hidden_field_tag :actor, @actor_query %>
+    <%= hidden_field_tag :genre, @genre_query %>
+    <%= hidden_field_tag :director, @director_query %>
+    <%= submit_tag "Find me another movie" %>
+  <% end %>
+
+  <h2>What about <%= link_to @movie_tip.title, movie_path(@movie_tip.id) %>?</h2>
+  <%= image_tag @movie_tip.cover, :class => "feature" %>
 
 <% end %>

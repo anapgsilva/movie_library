@@ -1,11 +1,1 @@
-<h1>Search My Movies</h1>
 
-<%= form_tag result_path, :method => 'get' do %>
-
-  <%= label_tag "Find a movie by title, actor, director, gender or library:" %>
-
-  <%= text_field_tag :query, params[:query] %>
-
-  <%= submit_tag "Get movie", name: nil %>
-
-<% end %>

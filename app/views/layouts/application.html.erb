@@ -5,40 +5,77 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag "/dist/css/styles.css" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css"> -->
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
+    <div class="sliding--menu__wrapper">
+
+      <input type="checkbox" id="navigation">
+      <label id="hamburger--icon" for="navigation">
+        <span class="icon-menu"></span>
+      </label>
+
+      <nav>
+        <ul>
+          <li>
+            <%= link_to "Movies", movies_path %>
+            <%= link_to "Actors", actors_path %>
+            <%= link_to "Genres", genres_path %>
+            <%= link_to "Directors", directors_path %>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="obfuscator">
+      </div>
+
+    </div>
+
+
+
     <div class="container">
 
       <nav class="top">
-        <%= link_to "Home", root_path %>
 
-        <% if @current_user.present? %>
+          <%= link_to "Home", root_path %>
 
-          <% if @current_user.admin? %>
-            <%= link_to "All users", users_path %>
+          <% if @current_user.present? %>
+
+            <% if @current_user.admin? %>
+              <%= link_to "All users", users_path %>
+            <% end %>
+
+            <%= link_to "Log out #{@current_user.email}", login_path, :method => "delete" %>
+
+          <% else %>
+            <%= link_to "Sign Up", new_user_path %>
+            <%= link_to "Log in", login_path %>
           <% end %>
 
-          <%= link_to "Log out #{@current_user.email}", login_path, :method => "delete" %>
-
-        <% else %>
-          <%= link_to "Sign Up", new_user_path %>
-          <%= link_to "Log in", login_path %>
-        <% end %>
       </nav>
+
+
+
 
       <% if @current_user.present? %>
         <nav class="user">
-          <%= link_to "My Libraries", libraries_path %>
-          <%= link_to "Search MyDB", search_path %>
-          <%= link_to "All Movies", movies_path %>
-          <%= link_to "Actors", actors_path %>
-          <%= link_to "Genres", genres_path %>
-          <%= link_to "Directors", directors_path %>
-          <%= link_to "Movie tip", suggestion_path %>
+          <div class="links">
+            <%= link_to "My Libraries", libraries_path %>
+            <%= link_to "Movie tip", suggestion_path %>
+          </div>
+
+          <div class="search">
+          <%= form_tag result_path, :method => 'get' do %>
+            <%= text_field_tag :query, params[:query] %>
+            <%= submit_tag "Search", name: nil, id: "search_bt" %>
+          <% end %>
+          </div>
+          
         </nav>
       <% end %>
 
