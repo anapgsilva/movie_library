@@ -6,12 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.destroy_all
+u1 = User.create(:name => "Ana", :email => 'ana@ga', :password => "chicken", :admin => true)
+
+
 Movie.destroy_all
 puts "Creating movies"
 
-m1 = Movie.create(:title => 'Pretty Woman', :cover => 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnZdvzKxFHLSgRcJuujrwiAslg5sgJ3StpOIFMqHk6At7WGtg4', :user_id => 1)
-m2 = Movie.create(:title => "Ocean's Eleven", :cover => 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjFDU7e4WTW0-DdukQZxoto_u6FRGprYlfjv7mTEcNC8lfbfTA', :year => "2001", :user_id => 1)
-m3 = Movie.create(:title => 'I Am Legend', :cover => 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_uGdNFnONYKsGenJdp3ZlwToXNWGnNzNVqi7JB1z6j-a-zdqZ', :user_id => 1)
+m1 = Movie.create(:title => 'Pretty Woman', :cover => 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnZdvzKxFHLSgRcJuujrwiAslg5sgJ3StpOIFMqHk6At7WGtg4', :user_id => u1.id)
+m2 = Movie.create(:title => "Ocean's Eleven", :cover => 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjFDU7e4WTW0-DdukQZxoto_u6FRGprYlfjv7mTEcNC8lfbfTA', :year => "2001", :user_id => u1.id)
+m3 = Movie.create(:title => 'I Am Legend', :cover => 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_uGdNFnONYKsGenJdp3ZlwToXNWGnNzNVqi7JB1z6j-a-zdqZ', :user_id => u1.id)
 
 puts "There are #{Movie.count} movies."
 
@@ -24,8 +28,9 @@ a2 = Actor.create(:name => 'George Clooney', :image => 'https://encrypted-tbn0.g
 a3 = Actor.create(:name => 'Will Smith', :image => 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDLky1E7SidErM6rs4kPO-1Ts6n9Fp1DAWWvcRcq7aZBm5b4ri')
 
 puts "There are #{Actor.count} actors."
-# #
-# #
+
+
+
 Director.destroy_all
 puts "Creating directors"
 
@@ -52,17 +57,11 @@ puts "There are #{Genre.count} genres."
 Library.destroy_all
 puts "Creating libraries"
 
-l1 = Library.create(:name => 'Blu-rays', :user_id => 1)
-# l2 = Library.create(:name => 'DVDs', :user_id => 5)
-#
-# puts "There are #{Library.count} libraries."
-User.destroy.all
-u1 = User.create(:name => "Ana", :email => 'ana@ga', :password => "chicken", :admin => true)
+l1 = Library.create(:name => 'Blu-rays', :user_id => u1.id)
+l2 = Library.create(:name => 'DVDs', :user_id => u1.id)
 
-puts "Movies into User"
-u1.movies << m1
-u1.movies << m2
-u1.movies << m3
+puts "There are #{Library.count} libraries."
+
 
 puts "Directors and Movies"
 d1.movies << m1
