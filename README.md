@@ -14,6 +14,8 @@ Postgresql
 
 pg search
 
+fonts awesome => for the sliding nav
+
 
 References:
 slide navigation menu:

@@ -18,6 +18,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.fa-bars:before {
+  color: #168bd9; }
+
 .icon-menu {
   color: #168bd9; }
   .icon-menu:before {
