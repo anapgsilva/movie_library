@@ -27,14 +27,11 @@ class PagesController < ApplicationController
     #gets query from user
     @actor_query = params[:actor]
     @director_query = params[:director]
-    @genre_query = params[:genre].capitalize
+    @genre_query = params[:genre]
     #gets the user movies
     @movies = @current_user.movies
-    # @actors = @current_user.actors
-    # @genres = @current_user.genres
-    # @directors = @current_user.directors
 
-    if params[:commit]
+    if params[:commit].present?
 
       @actor_movietip = []
       if @actor_query.present?
@@ -49,10 +46,9 @@ class PagesController < ApplicationController
 
       @genre_movietip = []
       if @genre_query.present?
-        genre = @genres.text_search @genre_query
-        raise 'hell'
-        if genre
-          genre_mv.movies.each do |movie|
+        genre_mv = @movies.text_search @genre_query
+        if genre_mv
+          genre_mv.each do |movie|
             @genre_movietip.push(movie)
           end
           @genre_movietip.uniq! if @genre_movietip.present?
@@ -61,9 +57,9 @@ class PagesController < ApplicationController
 
       @director_movietip = []
       if @director_query.present?
-        director_mv = @directors.text_search @director_query
+        director_mv = @movies.text_search @director_query
         if director_mv
-          director_mv.movies.each do |movie|
+          director_mv.each do |movie|
             @director_movietip.push(movie)
           end
           @director_movietip.uniq! if @director_movietip.present?

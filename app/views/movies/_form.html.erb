@@ -13,12 +13,15 @@
   <%= f.number_field :duration %>
 
   <%= f.label :genre_id %>
-  <%= f.select :genre_ids, options_from _collection_for_select((Genre.all, :id, :name), (@movie.genres.collect{|genre| [genre.name, genre.id]})), {}, {multiple: true, size: 4} %>
+  <%= f.select :genre_ids, (@movie.genres.collect{|genre| [genre.name, genre.id]}), {}, {multiple: true, size: 5} %>
 
+<!--- options_from _collection_for_select(Genre.all :id, :name) %>
 <!-- f.text_field :genre_ids, Genre.pluck(:name, :id) -->
 
   <%= f.label :actor_id %>
-  <%= f.select :actor_ids, Actor.pluck(:name, :id) %>
+  <%= f.select :actor_ids, (@movie.actors.collect{|actor| [actor.name, actor.id]}), {}, {multiple: true, size: 5} %>
+
+  <!--- Actor.pluck(:name, :id) --->
 
   <%= f.label :director_id %>
   <%= f.select :director_id, Director.pluck(:name, :id), :include_blank => true %>
