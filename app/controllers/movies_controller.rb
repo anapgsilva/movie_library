@@ -11,6 +11,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find params[:id]
     @libraries = @current_user.libraries
+    @libs = @libraries.select { |lib| lib.movies.include? @movie}
   end
 
   def edit
@@ -40,14 +41,16 @@ class MoviesController < ApplicationController
     imdbID = params[:format]
     @library = @current_user.libraries.find params[:id]
 
+    #adds movie to library or sends message that it's alraedy there
     if (Movie.find_by :imdbID => imdbID)
       @movie = Movie.find_by :imdbID => imdbID
       unless @library.movies.include? @movie
         @library.movies << @movie
+      else
+        flash[:movie_exists] = true
       end
     else
       @movie = Movie.create_movie_from_imdb imdbID
-      @current_user.movies << @movie
       @library.movies << @movie
     end
     redirect_to library_path(@library.id)

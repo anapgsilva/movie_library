@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon.eot?o7okb4");
-  src: url(".//fonts/icomoon.eot?o7okb4#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?o7okb4") format("truetype"), url("../fonts/icomoon.woff?o7okb4") format("woff"), url("../fonts/icomoon.svg?o7okb4#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?o7okb4#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?o7okb4") format("truetype"), url("../fonts/icomoon.woff?o7okb4") format("woff"), url("../fonts/icomoon.svg?o7okb4#icomoon") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -61,7 +61,7 @@ header {
       padding: 15px;
       margin: 0px;}
       .sliding--menu__wrapper nav a:hover {
-        background: #111; }
+        background: #122633; }
   .sliding--menu__wrapper label {
     display: block;
     font-weight: 700;
@@ -101,7 +101,7 @@ header {
       visibility: visible;
       pointer-events: auto;
       opacity: 0.5;
-      background: #111;
+      background: #122633;
       z-index: 1; }
 
 

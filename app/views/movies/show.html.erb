@@ -1,15 +1,15 @@
-<%= link_to "Back", @back_url %>
+<nav class="links_small">
+  <%= link_to "Back", @back_url %>
+  <%= link_to "Edit movie", edit_movie_path(@movie) %>
+  <%= link_to "Delete movie", @movie, :method => "delete", :data => {:confirm => "Are you sure you want to delete #{@movie.title}"} %>
+</nav>
+
 
 <h1><%= @movie.title %></h1>
 
 <% if @message.present? %>
   <h3><%= @message %></h3>
 <% end %>
-
-<div class="controls">
-  <%= link_to "Edit movie", edit_movie_path(@movie) %>
-  <%= link_to "Delete movie", @movie, :method => "delete", :data => {:confirm => "Are you sure you want to delete #{@movie.title}"} %>
-</div>
 
 <% if @movie.cover.present? %>
   <%= image_tag @movie.cover, :class => "feature", :alt => @movie.title  %>
@@ -38,11 +38,9 @@
     <li>Synopsis: <%= @movie.synopsis %></li>
   <% end %>
 
-  <% if @movie.libraries.present? %>
-    <li>Present in <%= pluralize @movie.libraries.count, "library" %>:
-       <% @movie.libraries.each do |library| %>
-         <%= library.name %>,
-       <% end %>
+  <% if @libs.present? %>
+    <li>Present in <%= pluralize @libs.count, "library" %>:
+      <%= @libs.pluck(:name).join(", ")%>
      </li>
   <% end %>
 

@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>The Movie Library</title>
+    <title>Movie Library</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "/dist/css/styles.css" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css"> -->
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 
+    <% if @current_user.present? %>
     <div class="sliding--menu__wrapper">
 
       <input type="checkbox" id="navigation">
@@ -35,13 +34,12 @@
       </div>
 
     </div>
-
+    <% end %>
 
 
     <div class="container">
 
       <nav class="top">
-
           <%= link_to "Home", root_path %>
 
           <% if @current_user.present? %>
@@ -75,7 +73,7 @@
             <%= submit_tag "Search", name: nil, id: "search_bt" %>
           <% end %>
           </div>
-          
+
         </nav>
       <% end %>
 

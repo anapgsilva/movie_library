@@ -1,8 +1,16 @@
-<%= link_to "Back", @back_url %>
+<nav class="links_small">
+  <%= link_to "Back", @back_url %>
+  <%= link_to "Edit library", edit_library_path(@library) %>
+  <%= link_to "Delete library", @library, :method => "delete", :data => {:confirm => "Are you sure you want to delete #{@library.name}"} %>
+</nav>
+
+<% if flash[:movie_exists].present? %>
+  <script>
+    window.alert("Movie is already in your library.");
+  </script>
+<% end %>
 
 <h1><%= @library.name %></h1>
-
-
 
 <%= form_tag library_path, :method => "get" do %>
   <%= hidden_field_tag :id, @library.id %>
@@ -21,7 +29,7 @@
       <li>
         <h4><%= link_to movie["Title"], "https://www.imdb.com/title/#{movie["imdbID"]}/" %></h4>
         <% if movie["Poster"].include? ("http") %>
-          <%= image_tag movie["Poster"], :class => "thumb", :alt => movie["Title"] %>
+          <%= link_to image_tag(movie["Poster"], :class => "thumb", :alt => movie["Title"]), "https://www.imdb.com/title/#{movie["imdbID"]}/"  %>
         <% end %>
         <%= link_to "Add movie", add_movie_path(movie["imdbID"], :id => @library.id) %>
       </li>
@@ -32,12 +40,6 @@
 <% else %>
   <p><%= @message %></p>
 <% end %>
-
-<div class="controls">
-  <%= link_to "Edit library", edit_library_path(@library) %>
-  <%= link_to "Delete library", @library, :method => "delete", :data => {:confirm => "Are you sure you want to delete #{@library.name}"} %>
-</div>
-
 
 
 

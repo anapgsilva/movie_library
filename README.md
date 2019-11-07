@@ -1,6 +1,21 @@
+Movie Library
+
+
+
+
+
+Have some snap shots of the application
+
+Ruby version
+
+Gems installed
+
+Postgresql
+
+pg search
+
 
 References:
-
 slide navigation menu:
 https://www.cssscript.com/sliding-drawer-menu-pure-css/
 

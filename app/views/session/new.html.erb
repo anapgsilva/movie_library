@@ -4,19 +4,23 @@
 <p>Search your movies by actor, director or genre. Or just ask what movie should you watch tonight?</p>
 
 <div class="log_form">
-<h2>Log In</h2>
+    <h2 class="log_form">Log In</h2>
 
-<% if flash[:error].present? %>
-  <p><%= flash[:error] %></p>
-<% end %>
 
-<%= form_tag login_path do %>
-  <%= label_tag :email %>
-  <%= email_field_tag :email %>
+  <div class="error">
+    <% if flash[:error].present? %>
+      <p><%= flash[:error] %></p>
+    <% end %>
+  </div>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
+  <%= form_tag login_path do %>
+    <%= label_tag :email %>
+    <%= email_field_tag :email %>
 
-  <%= submit_tag "Sign in" %>
-<% end %>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+
+    <%= submit_tag "Log in" %>
+  <% end %>
+
 </div>
