@@ -7,12 +7,19 @@ Once the user has movies in, these movies can then be searched or listed by movi
 
 
 ##Screenshot of Log In
+<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Login_page" width="300">
+
 ##Screenshot of Libraries
+<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Create_libraries" width="300">
+
 ##Screenshot of Add Movie
+<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Add_movie" width="300">
+
 ##Screenshot of Menu
+<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Lists_menu" width="300">
+
 ##Screenshot of Search
-
-
+<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Search_lists" width="300">
 
 
 

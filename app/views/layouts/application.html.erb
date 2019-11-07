@@ -40,9 +40,10 @@
     <div class="container">
 
       <nav class="top">
-          <%= link_to "Home", root_path %>
 
           <% if @current_user.present? %>
+
+            <%= link_to "Home", root_path %>
 
             <% if @current_user.admin? %>
               <%= link_to "All users", users_path %>
