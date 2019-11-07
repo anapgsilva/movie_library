@@ -7,11 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+
+puts "Creating users"
 u1 = User.create(:name => "Ana", :email => 'ana@ga', :password => "chicken", :admin => true)
 u2 = User.create(:name => "Jeffrey", :email => 'j@ga', :password => "chicken", :admin => false)
 u3 = User.create(:name => "Kait", :email => 'k@ga', :password => "chicken", :admin => false)
 
-
+puts "There are #{User.count} movies."
 
 
 Movie.destroy_all
@@ -25,15 +27,11 @@ m5 = Movie.create(:title => 'Casino Royale', :cover => 'https://m.media-amazon.c
 m6 = Movie.create(:title => 'The Lost World: Jurassic Park', :cover => 'https://m.media-amazon.com/images/M/MV5BMDFlMmM4Y2QtNDg1ZS00MWVlLTlmODgtZDdhYjY5YjdhN2M0XkEyXkFqcGdeQXVyNTI4MjkwNjA@._V1_SX300.jpg', :user_id => u1.id)
 m7 = Movie.create(:title => "Terminator 2: Judgment Day", :cover => 'https://m.media-amazon.com/images/M/MV5BMGU2NzRmZjUtOGUxYS00ZjdjLWEwZWItY2NlM2JhNjkxNTFmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg', :user_id => u1.id)
 m8 = Movie.create(:title => "Spectre", :cover => 'https://m.media-amazon.com/images/M/MV5BOWQ1MDE1NzgtNTQ4OC00ZjliLTllZDAtN2IyOTVmMTc5YjUxXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg', :user_id => u1.id)
-
 m10 = Movie.create(:title => 'Avengers: Age of Ultron', :cover => 'https://m.media-amazon.com/images/M/MV5BMTM4OGJmNWMtOTM4Ni00NTE3LTg3MDItZmQxYjc4N2JhNmUxXkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg', :user_id => u2.id)
 m11 = Movie.create(:title => 'Avengers: Endgame', :cover => 'https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg', :user_id => u2.id)
 m12 = Movie.create(:title => 'Avengers: Infinity War', :cover => 'https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg', :user_id => u2.id)
 m13 = Movie.create(:title => 'The Avengers', :cover => 'https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg', :user_id => u2.id)
 m14 = Movie.create(:title => 'Thor', :cover => 'https://m.media-amazon.com/images/M/MV5BOGE4NzU1YTAtNzA3Mi00ZTA2LTg2YmYtMDJmMThiMjlkYjg2XkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg', :user_id => u2.id)
-
-
-
 m20 = Movie.create(:title => 'Kill Bill: Vol. 1', :cover => 'https://m.media-amazon.com/images/M/MV5BNzM3NDFhYTAtYmU5Mi00NGRmLTljYjgtMDkyODQ4MjNkMGY2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg', :user_id => u3.id)
 m21 = Movie.create(:title => 'Kill Bill: Vol. 2', :cover => 'https://m.media-amazon.com/images/M/MV5BNmFiYmJmN2QtNWQwMi00MzliLThiOWMtZjQxNGRhZTQ1MjgyXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_SX300.jpg', :user_id => u3.id)
 m22 = Movie.create(:title => 'Melancholia', :cover => 'https://m.media-amazon.com/images/M/MV5BMTk4NjM0MjI3MV5BMl5BanBnXkFtZTcwNjcxMDYzNg@@._V1_SX300.jpg', :user_id => u3.id)
@@ -44,7 +42,6 @@ m26 = Movie.create(:title => 'Blue Velvet', :cover => 'https://m.media-amazon.co
 m27 = Movie.create(:title => 'Eraserhead', :cover => 'https://m.media-amazon.com/images/M/MV5BMDExYzg5YjQtMzE0Yy00OWJjLThiZTctMWI5MzhjM2RmNjA4L2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg', :user_id => u3.id)
 m28 = Movie.create(:title => 'Belladonna of Sadness', :cover => 'https://m.media-amazon.com/images/M/MV5BNTY4NDVhMDYtMjVjZS00YTA0LTllMjItYjNlNTU0YWZmMmMxXkEyXkFqcGdeQXVyNDE5MTU2MDE@._V1_SX300.jpg', :user_id => u3.id)
 m29 = Movie.create(:title => 'Hocus Pocus', :cover => 'https://m.media-amazon.com/images/M/MV5BMmQyYmY5ZTMtM2JkNi00NmM2LWE3ZmEtYWYzZmRkZDM0ZTdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg', :user_id => u3.id)
-
 
 puts "There are #{Movie.count} movies."
 
@@ -73,10 +70,7 @@ a18 = Actor.create(:name => 'Ivana Baquero')
 a19 = Actor.create(:name => 'Christian Slater')
 a20 = Actor.create(:name => 'Uma Thurman')
 
-
-
 puts "There are #{Actor.count} actors."
-
 
 
 Director.destroy_all
@@ -89,7 +83,6 @@ d4 = Director.create(:name => 'Kenny Ortega')
 d5 = Director.create(:name => 'Lars von Trier')
 d6 = Director.create(:name => 'Tony Scott')
 d7 = Director.create(:name => 'Quentin Tarantino')
-
 d8 = Director.create(:name => 'Joss Whedon')
 d9 = Director.create(:name => 'Anthony Russo, Joe Russo')
 d10 = Director.create(:name => 'Kenneth Branagh')
@@ -124,11 +117,8 @@ g12 = Genre.create(:name => 'Family')
 g13 = Genre.create(:name => 'Adventure')
 g14 = Genre.create(:name => 'War')
 
-
-
 puts "There are #{Genre.count} genres."
-#
-# #
+
 Library.destroy_all
 puts "Creating libraries"
 
@@ -136,7 +126,6 @@ l1 = Library.create(:name => 'Blu-rays', :user_id => u1.id)
 l2 = Library.create(:name => 'DVDs', :user_id => u1.id)
 l3 = Library.create(:name => 'Avengers', :user_id => u2.id)
 l4 = Library.create(:name => "Kait's favs", :user_id => u3.id)
-
 
 puts "There are #{Library.count} libraries."
 
@@ -162,13 +151,11 @@ d17.movies << m7
 d18.movies << m8
 
 
-
 puts "Movies into Libraries"
 l4.movies << m20 << m21 << m22 << m23 << m24 << m25 << m26 << m27 << m28 << m29
 l1.movies << m1 << m2 << m3 << m7
 l2.movies << m4 << m5 << m6 << m8
 l3.movies << m10 << m11 << m12 << m13 << m14
-
 
 
 puts "Actors and Movies"
@@ -192,7 +179,6 @@ a17.movies << m25
 a18.movies << m23
 a19.movies << m24
 a20.movies << m20 << m21
-
 
 puts "Genres and Movies"
 m1.genres << g1 << g2
