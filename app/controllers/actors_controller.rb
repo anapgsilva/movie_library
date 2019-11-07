@@ -10,6 +10,7 @@ class ActorsController < ApplicationController
   def show
     @actors = @current_user.actors
     @actor = @actors.find params[:id]
+    @actor_mv = @actor.movies.where :user_id => @current_user.id
   end
 
   private

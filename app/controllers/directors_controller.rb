@@ -11,6 +11,7 @@ class DirectorsController < ApplicationController
   def show
     @directors = @current_user.directors
     @director = @directors.find params[:id]
+    @director_mv = @director.movies.where :user_id => @current_user.id
   end
 
   private
