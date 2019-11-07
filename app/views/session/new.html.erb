@@ -1,17 +1,17 @@
 <h1>Welcome to The Movie Library</h1>
 
-<p>Organise your movies all in one place. Make your own libraries.</p>
-<p>Search your movies by actor, director or genre. Or just ask what movie should you watch tonight?</p>
+<p>This is where you can keep a record of all your movies.</p>
+<p>Create as many libraries as you want and simply add the movies you wish.</p>
+<p>Search your own lists by movie title, actor, director or genre.</p>
+<p>Or just ask what movie should you watch tonight?</p>
 
 <div class="log_form">
     <h2 class="log_form">Log In</h2>
 
 
-  <div class="error">
     <% if flash[:error].present? %>
-      <p><%= flash[:error] %></p>
+      <p><span class="error_msg"><%= flash[:error] %></span></p>
     <% end %>
-  </div>
 
   <%= form_tag login_path do %>
     <%= label_tag :email %>

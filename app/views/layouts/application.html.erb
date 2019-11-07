@@ -69,7 +69,7 @@
 
           <div class="search">
           <%= form_tag result_path, :method => 'get' do %>
-            <%= text_field_tag :query, params[:query] %>
+            <%= text_field_tag :search_query, params[:search_query] %>
             <%= submit_tag "Search", name: nil, id: "search_bt" %>
           <% end %>
           </div>

@@ -64,12 +64,12 @@ class Movie < ApplicationRecord
 
     #check if Genre already exists in user or not, before creating new Genre
     movie["Genre"].split(", ").each do |genre|
-      result = Genre.find_by :name => genre
+      result = Genre.find_by :name => genre.capitalize
       if result
         @movie.genres << result
       else
         new_genre = Genre.new
-        new_genre.name = genre
+        new_genre.name = genre.capitalize
         new_genre.save
         @movie.genres << new_genre
       end
@@ -77,12 +77,12 @@ class Movie < ApplicationRecord
 
     #check if Actors already exist in user or not, before creating new Actors
     movie["Actors"].split(", ").each do |actor|
-      result = Actor.find_by :name => actor
+      result = Actor.find_by :name => actor.capitalize
       if result
         @movie.actors << result
       else
         new_actor = Actor.new
-        new_actor.name = actor
+        new_actor.name = actor.capitalize
         new_actor.save
         @movie.actors << new_actor
       end

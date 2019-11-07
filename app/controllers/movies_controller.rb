@@ -41,7 +41,7 @@ class MoviesController < ApplicationController
     imdbID = params[:format]
     @library = @current_user.libraries.find params[:id]
 
-    #adds movie to library or sends message that it's alraedy there
+    #adds movie to library or sends message that it's already there
     if (Movie.find_by :imdbID => imdbID)
       @movie = Movie.find_by :imdbID => imdbID
       unless @library.movies.include? @movie
@@ -51,6 +51,7 @@ class MoviesController < ApplicationController
       end
     else
       @movie = Movie.create_movie_from_imdb imdbID
+      @current_user.movies << @movie 
       @library.movies << @movie
     end
     redirect_to library_path(@library.id)
@@ -65,6 +66,6 @@ class MoviesController < ApplicationController
   private
   def movie_params
     params.require(:movie).permit(:title, :cover, :year, :duration, :synopsis, :genre_ids, :actor_ids, :director_id, :library_ids, :user_id, :imdbID)
-    # add => [] for many to many associations
   end
+
 end

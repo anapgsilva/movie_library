@@ -1,50 +1,45 @@
-Movie Library
+#Movie Library
+
+This web application allows the users to keep a record of all their movies, by organising them into libraries.
+All the movie information is easily pulled from the Internet Movie Database (IMDB), using the Movie Database (IMDB Alternative) API, without the need for any user manipulation.
+
+Once the user has movies in, these movies can then be searched or listed by movie, genre, actors or directors. There is also a feature that suggests movies to the user, depending on their genre, actor and/or director input.
+
+
+##Screenshot of Log In
+##Screenshot of Libraries
+##Screenshot of Add Movie
+##Screenshot of Menu
+##Screenshot of Search
 
 
 
 
 
-Have some snap shots of the application
+This is an application mainly built on Ruby on Rails 6.0.0, using Postgresql as the database for Active Record.
+And it includes the following add-ons:
 
-Ruby version
+- bcrypt, for password encription;
 
-Gems installed
+- pg search, for easy query matching when accessing the database
 
-Postgresql
+- unirest, to get movies data using the Movie Database API
 
-pg search
+- sliding menu code was obtained from https://www.cssscript.com/sliding-drawer-menu-pure-css/
 
-fonts awesome => for the sliding nav
-
-
-References:
-slide navigation menu:
-https://www.cssscript.com/sliding-drawer-menu-pure-css/
+- hamburger icon used was from fonts awesome (https://fontawesome.com/)
 
 
+Application is easily deployed to Heroku to be available for users.
 
+Heroku deployment intructions:
+=> Create project and set up
+$ heroku create movie_library
+$ git add .
+$ git commit
+$ git push heroku master
+$ heroku run rails db:migrate
+$ heroku run rails db:seed
 
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+=>When installed
+$ heroku open

@@ -11,8 +11,8 @@ class LibrariesController < ApplicationController
     @library = @current_user.libraries.find params[:id]
 
     #shows IMDB search results
-    if params[:query].present?
-      query = params[:query].titleize
+    if params[:imdb_query].present?
+      query = params[:imdb_query].titleize
       url = "https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=#{query.downcase.split.join("+")}"
       movies_data = Movie.get_movies url #JSON
 

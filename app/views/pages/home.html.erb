@@ -1,10 +1,10 @@
 <h1>Welcome to Movie Library</h1>
 
 <% if @current_user.present?  %>
-  <h2>Hi <%= @current_user.name %>!</h2>
+  <h2><span class="username">Hi <%= @current_user.name.capitalize %>!</span></h2>
 <% end %>
 
-<p>Keep your movies all in one place.</p>
-<p>Make your own libraries of movies.</p>
-<p>Search your movies by actor, director or genre.</p>
+<p>This is where you can keep a record of all your movies.</p>
+<p>Create as many libraries as you want and simply add the movies you wish.</p>
+<p>Search your own lists by movie title, actor, director or genre.</p>
 <p>Or just ask what movie should you watch tonight?</p>
