@@ -9,7 +9,8 @@ class DirectorsController < ApplicationController
   end
 
   def show
-    @director = Director.find params[:id]
+    @directors = @current_user.directors
+    @director = @directors.find params[:id]
   end
 
   private

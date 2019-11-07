@@ -79,7 +79,6 @@ class PagesController < ApplicationController
         @movie_tips = movie_tips.group_by{ |movie| movie }.select { |k, v| v.size > 0 }.map(&:first) unless @movie_tips.present?
 
         @movie_tip = @movie_tips.shuffle[0]
-        # raise "hell"
 
       end
     end

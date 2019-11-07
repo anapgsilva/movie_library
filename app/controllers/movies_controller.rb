@@ -20,7 +20,8 @@ class MoviesController < ApplicationController
   end
 
   def update
-    movie = Movie.find params[:id]
+    @movies = @current_user.movies
+    movie = @movies.find params[:id]
     movie.update movie_params
     redirect_to movie
   end
@@ -40,10 +41,10 @@ class MoviesController < ApplicationController
   def add_movie
     imdbID = params[:format]
     @library = @current_user.libraries.find params[:id]
-
+    @movies = @current_user.movies
     #adds movie to library or sends message that it's already there
-    if (Movie.find_by :imdbID => imdbID)
-      @movie = Movie.find_by :imdbID => imdbID
+    if (@movies.find_by :imdbID => imdbID)
+      @movie = @movies.find_by :imdbID => imdbID
       unless @library.movies.include? @movie
         @library.movies << @movie
       else
@@ -51,15 +52,16 @@ class MoviesController < ApplicationController
       end
     else
       @movie = Movie.create_movie_from_imdb imdbID
-      @current_user.movies << @movie 
+      @current_user.movies << @movie
       @library.movies << @movie
     end
     redirect_to library_path(@library.id)
   end
 
   def destroy
-    @movie = Movie.find params[:id]
-    @movie.destroy
+    @movies = @current_user.movies
+    movie = @movies.find params[:id]
+    movie.destroy
     redirect_to movies_path
   end
 

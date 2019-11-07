@@ -8,7 +8,8 @@ class GenresController < ApplicationController
   end
 
   def show
-    @genre = Genre.find params[:id]
+    @genres = @current_user.genres
+    @genre = @genres.find params[:id]
   end
 
   private
