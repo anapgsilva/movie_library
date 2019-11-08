@@ -1,4 +1,6 @@
+<% unless @current_user.present? %>
 <h1>Welcome to Movie Library</h1>
+<% end %>
 
 <% if @current_user.present?  %>
   <h2><span class="username">Hi <%= @current_user.name.capitalize %>!</span></h2>

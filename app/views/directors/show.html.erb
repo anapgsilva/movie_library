@@ -5,6 +5,8 @@
 <% if @director_mv.present? %>
   <h2>Movies</h2>
 
+  <p><%= pluralize @director_mv.count, "movie" %></p>
+
   <% @director_mv.each do |movie| %>
     <%= link_to image_tag(movie.cover, :class => "thumb", :alt => movie.title), movie  %>
   <% end %>

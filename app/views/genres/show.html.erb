@@ -5,6 +5,8 @@
 <% if @genre_mv.present? %>
   <h2>Movies</h2>
 
+  <p><%= pluralize @genre_mv.count, "movie" %></p>
+
   <% @genre_mv.each do |movie| %>
     <%= link_to image_tag(movie.cover, :class => "thumb", :alt => movie.title), movie  %>
   <% end %>
