@@ -56,7 +56,7 @@ and added the following code to the style.css:
 Application was then deployed to Heroku to be available for users.
 
 Heroku deployment instructions:
-=> Create project and set up
+_Create project and set up_
 $ heroku create movie_library
 $ git add .
 $ git commit
@@ -64,5 +64,5 @@ $ git push heroku master
 $ heroku run rails db:migrate
 $ heroku run rails db:seed
 
-=>When installed
+_When installed_
 $ heroku open
