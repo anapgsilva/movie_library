@@ -11,18 +11,22 @@ Once the user has movies in, these movies can then be searched or listed by movi
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Login_page.png" width="500">
 
 ## Libraries
+A library can be created with a specified name, for example: "Want to Watch".
 
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Create_libraries.png" width="500">
 
 ## Add Movie
+Once created a library, you can add as many movies as you want by searching (IMDB) for term words.
 
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Add_movie.png" width="500">
 
-## Menu of your lists (movies, actors, genres and directors)
+## Menu of user lists
+Once the user has some movies, these can be listed by different criteria, such as movies title/synospsis, actors name, genres and directors name.
 
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Lists_menu.png" width="500">
 
 ## Search your lists
+At any moment, the search bar can be used to search the user internal lists, using any term words.
 
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Search_lists.png" width="500">
 
