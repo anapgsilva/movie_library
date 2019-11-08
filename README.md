@@ -6,30 +6,30 @@ All the movie information is easily pulled from the Internet Movie Database (IMD
 Once the user has movies in, these movies can then be searched or listed by movie, genre, actors or directors. There is also a feature that suggests movies to the user, depending on their genre, actor and/or director input.
 
 
-## Screenshot of Log In
+## Log In
 
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Login_page.png" width="300">
 
-## Screenshot of Libraries
+## Libraries
 
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Create_libraries.png" width="300">
 
-## Screenshot of Add Movie
+## Add Movie
 
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Add_movie.png" width="300">
 
-## Screenshot of Menu
+## Menu of your lists (movies, actors, genres and directors)
 
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Lists_menu.png" width="300">
 
-## Screenshot of Search
+## Search your lists
 
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Search_lists.png" width="300">
 
 
 
-This is an application mainly built on Ruby on Rails 6.0.0, using Postgresql as the database for Active Record.
-And it includes the following add-ons:
+This application was built on Ruby on Rails 6.0.0, using Postgresql as the database for Active Record.
+And it includes the following add-on gems:
 
 - bcrypt, for password encription;
 
@@ -37,14 +37,19 @@ And it includes the following add-ons:
 
 - unirest, to get movies data using the Movie Database API
 
-- sliding menu code was obtained from https://www.cssscript.com/sliding-drawer-menu-pure-css/
+CSS add-ons were:
+- sliding menu code (app/assets/stylesheets/styles.css) was obtained from https://www.cssscript.com/sliding-drawer-menu-pure-css/
 
-- hamburger icon used was from fonts awesome (https://fontawesome.com/)
+- sliding menu css code was then adapted to use the hamburger icon from fonts awesome (https://fontawesome.com/). For this, I included the following link in the application.html.erb head:
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+and added the following code to the style.css:
+  .fa-bars:before {
+    color: #168bd9; }
 
 
-Application is easily deployed to Heroku to be available for users.
+Application was then deployed to Heroku to be available for users.
 
-Heroku deployment intructions:
+Heroku deployment instructions:
 => Create project and set up
 $ heroku create movie_library
 $ git add .
