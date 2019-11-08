@@ -9,6 +9,7 @@ Once the user has movies in, these movies can then be searched or listed by movi
 
 
 ## Log In
+Start by signing up for an account and then login.
 
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Login_page.png" width="500">
 
