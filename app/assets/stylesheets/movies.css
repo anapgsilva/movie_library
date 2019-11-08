@@ -100,6 +100,8 @@ nav.user {
 
 .feature {
   max-width: 100%;
+  border: 3px solid #fff;
+  border-radius: 15px;
 }
 
 .thumb {
@@ -116,6 +118,10 @@ h3 a {
 ul {
   list-style: none;
   padding-left: 0px;
+}
+
+li {
+  margin-bottom: 10px;
 }
 
 label {
@@ -153,4 +159,23 @@ span.username {
 
 .controls {
   margin-bottom: 20px;
+}
+
+.library_add_remove label {
+  display: block;
+}
+
+.library_add_remove select {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.add_to_btn {
+  display: inline-block;
+  vertical-align: top;
+}
+.remove_btn {
+  display: inline-block;
+  vertical-align: top;
 }

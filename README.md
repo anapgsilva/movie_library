@@ -21,7 +21,7 @@ Once created a library, you can add as many movies as you want by searching (IMD
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Add_movie.png" width="500">
 
 ## Menu of user lists
-Once the user has some movies, these can be listed by different criteria, such as movies title/synospsis, actors name, genres and directors name.
+Once the user has some movies, these can be listed by different criteria, such as movies title/synopsis, actors name, genres and directors name.
 
 <img src="https://anapgsilva.github.io/movie_library/app/assets/images/Lists_menu.png" width="500">
 

@@ -48,12 +48,11 @@
 
 
 
-<%= form_tag add_or_remove_from_library_path(@movie.id), :method => "put" do%>
+<%= form_tag add_or_remove_from_library_path(@movie.id), :method => "put", :class => "library_add_remove" do%>
   <%= label_tag "Add/Remove from my Libraries:"%>
+  <%= submit_tag "Add to", :class => "add_to_btn" %>
+  <%= submit_tag "Remove from", :class => "remove_btn" %>
   <%= select_tag :library_id, options_from_collection_for_select(@libraries, :id, :name), {multiple: true} %>
-
-  <%= submit_tag "Add to" %>
-  <%= submit_tag "Remove from"%>
 
 <% end %>
 

@@ -18,7 +18,7 @@ class LibrariesController < ApplicationController
 
       #if no data, generate message
       if movies_data.body["Search"] != nil
-        @imdb_result = movies_data.body["Search"][0..9]
+        @imdb_result = movies_data.body["Search"]
       else
         @message = "No results were found."
       end
