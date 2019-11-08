@@ -8,23 +8,23 @@ Once the user has movies in, these movies can then be searched or listed by movi
 
 ## Log In
 
-<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Login_page.png" width="300">
+<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Login_page.png" width="500">
 
 ## Libraries
 
-<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Create_libraries.png" width="300">
+<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Create_libraries.png" width="500">
 
 ## Add Movie
 
-<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Add_movie.png" width="300">
+<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Add_movie.png" width="500">
 
 ## Menu of your lists (movies, actors, genres and directors)
 
-<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Lists_menu.png" width="300">
+<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Lists_menu.png" width="500">
 
 ## Search your lists
 
-<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Search_lists.png" width="300">
+<img src="https://anapgsilva.github.io/movie_library/app/assets/images/Search_lists.png" width="500">
 
 
 
