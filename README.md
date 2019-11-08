@@ -1,6 +1,6 @@
 # Movie Library Web App
 
-https://anapgsilva-movielibrary.herokuapp.com/
+[Find it here.](https://anapgsilva-movielibrary.herokuapp.com/)
 
 This web application allows the users to keep a record of all their movies, by organising them into libraries.
 All the movie information is easily pulled from the Internet Movie Database (IMDB), using the Movie Database (IMDB Alternative) API, without the need for any user manipulation.
