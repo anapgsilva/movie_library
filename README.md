@@ -1,6 +1,6 @@
 # Movie Library Web App
 
-[Find it here.](https://anapgsilva-movielibrary.herokuapp.com/)
+[Open it here.](https://anapgsilva-movielibrary.herokuapp.com/)
 
 This web application allows the users to keep a record of all their movies, by organising them into libraries.
 All the movie information is easily pulled from the Internet Movie Database (IMDB), using the Movie Database (IMDB Alternative) API, without the need for any user manipulation.
@@ -58,12 +58,12 @@ Application was then deployed to Heroku to be available for users.
 
 Heroku deployment instructions:
 _Create project and set up_
-$ heroku create movie_library
-$ git add .
-$ git commit
-$ git push heroku master
-$ heroku run rails db:migrate
-$ heroku run rails db:seed
+* $ heroku create movie_library
+* $ git add .
+* $ git commit
+* $ git push heroku master
+* $ heroku run rails db:migrate
+* $ heroku run rails db:seed
 
 _When installed_
-$ heroku open
+* $ heroku open
