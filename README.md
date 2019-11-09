@@ -65,6 +65,4 @@ _Create project and set up_
 * $ git push heroku master
 * $ heroku run rails db:migrate
 * $ heroku run rails db:seed
-
-_When installed_
 * $ heroku open
