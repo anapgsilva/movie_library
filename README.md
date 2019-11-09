@@ -57,6 +57,7 @@ and added the following code to the style.css:
 Application was then deployed to Heroku to be available for users.
 
 Heroku deployment instructions:
+
 _Create project and set up_
 * $ heroku create movie_library
 * $ git add .
