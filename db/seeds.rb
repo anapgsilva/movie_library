@@ -13,7 +13,7 @@ u1 = User.create(:name => "Ana", :email => 'ana@ga', :password => "chicken", :ad
 u2 = User.create(:name => "Jeffrey", :email => 'j@ga', :password => "chicken", :admin => false)
 u3 = User.create(:name => "Kait", :email => 'k@ga', :password => "chicken", :admin => false)
 
-puts "There are #{User.count} movies."
+puts "There are #{User.count} users."
 
 
 Movie.destroy_all
